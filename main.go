@@ -69,6 +69,9 @@ func upload(p string) (string, error) {
 }
 
 func getMimeType(file *os.File) string {
+	if len(os.Args) > 2 {
+		return os.Args[2]
+	}
 	file.Seek(0, 0)
 	buf := make([]byte, 512)
 	n, err := file.Read(buf)
